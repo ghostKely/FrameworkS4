@@ -5,19 +5,15 @@
  */
 package traitment;
 
-import java.util.HashMap;
-
 /**
  *
  * @author ITU
  */
 public class ModelView {
     String view;
-    HashMap<String,Object> data;
 
-    public ModelView(String view,HashMap<String,Object> data) {
+    public ModelView(String view) {
         this.view = view;
-        this.data=data;
     }
 
     public String getView() {
@@ -27,12 +23,5 @@ public class ModelView {
     public void setView(String view) {
         this.view = view;
     }
-    
-    public HashMap<String,Object> getData(){
-        return this.data;
-    }
-    
-    public void setData(HashMap<String,Object> data){
-        this.data=data;
-    }
+
 }

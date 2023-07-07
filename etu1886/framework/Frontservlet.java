@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import etu1883.frameworki.Utilitaire;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,27 +61,7 @@ public class Frontservlet extends HttpServlet {
             try{
                 Mapping mapping=fonction.getMapping(annotation, MappingUrls);
                 ModelView invomethode=fonction.invocationMethode(annotation, MappingUrls);
-                //recuperation valeur input//  
-                    Class classe=fonction.getClass(annotation,MappingUrls);
-                    Field[] listeAttribut=classe.getDeclaredFields();
-                    Object instance=classe.newInstance();
-
-                    for(int i=0;i<listeAttribut.length;i++){
-                        String attEnvoie=request.getParameter(listeAttribut[i].getName());
-                        if(listeAttribut[i].getType().getSimpleName().equals("String") && attEnvoie!=null){
-                            instance.getClass().getMethod("set"+listeAttribut[i].getName(),String.class).invoke(instance,attEnvoie);
-                        }
-                        else if(listeAttribut[i].getType().getSimpleName().equals("double") && attEnvoie!=null){
-                            instance.getClass().getMethod("set"+listeAttribut[i].getName(),double.class).invoke(instance,Double.parseDouble(attEnvoie));
-                        }
-                        else if(listeAttribut[i].getType().getSimpleName().equals("int") && attEnvoie!=null){
-                            instance.getClass().getMethod("set"+listeAttribut[i].getName(),int.class).invoke(instance,Integer.parseInt(attEnvoie));
-                        }
-                    }
-                //recuperation valeur input//
-
-                HashMap<String,Object> mapView=invomethode.getData();
-                request.getSession().setAttribute("attribut",mapView.get(annotation));
+                out.println("methode: /"+ invomethode.getView());
                 response.sendRedirect(request.getContextPath()+"/"+invomethode.getView());
             }catch(Exception ex){
                 out.print(ex);
