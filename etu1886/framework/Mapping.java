@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package etu1886.frameworki;
+import java.awt.*;
 
 import java.util.HashMap;
 
