@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package etu1886.frameworki;
+package etu1883.frameworki;
 
 import annotation.Myannotation;
 import java.util.Vector;
