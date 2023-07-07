@@ -8,6 +8,7 @@ package personne;
 import annotation.Myannotation;
 import java.util.HashMap;
 import traitment.ModelView;
+import traitment.FileUpload;
 
 /**
  *
@@ -21,6 +22,7 @@ import traitment.ModelView;
 public class Emp {
     int Id;
     String Nom;
+    FileUpload File;
 
     public Emp(){}
      
@@ -40,9 +42,17 @@ public class Emp {
     public String getNom() {
         return Nom;
     }
+
+    public FileUpload getFile(){
+        return this.File;
+    }
     
     public void setNom(String nom) {
         this.Nom = nom;
+    }
+
+    public void setFile(FileUpload file){
+        this.File=file;
     }
     
     @Myannotation(value="empall.do")
@@ -53,12 +63,14 @@ public class Emp {
         view.addItem("attribut",34);
         return view;
     }
-    
+
+    //regle: la classe emp doit comporter Un attribut FileUpload
     @Myannotation(value="add_Emp.do")
     public ModelView save(){
         HashMap<String,Object> map=new HashMap<String,Object>();
         ModelView view=new ModelView("AffichageEmp.jsp",map);
-        view.addItem("attribut",this.getNom());
+        this.getFile().upload("C:/perso/film");
+        view.addItem("attribut",this.getFile().getName());
         return view;
     }
 
