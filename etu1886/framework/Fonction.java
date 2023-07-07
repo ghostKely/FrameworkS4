@@ -6,7 +6,7 @@
 package traitment;
 
 import annotation.Myannotation;
-import etu1883.frameworki.Mapping;
+import etu1886.frameworki.Mapping;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.HashMap;
