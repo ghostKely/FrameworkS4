@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import etu1886.frameworki.Utilitaire;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,6 +62,8 @@ public class Frontservlet extends HttpServlet {
                 Mapping mapping=fonction.getMapping(annotation, MappingUrls);
                 ModelView invomethode=fonction.invocationMethode(annotation, MappingUrls);
                 out.println("methode: /"+ invomethode.getView());
+                HashMap<String,Object> mapView=invomethode.getData();
+                request.getSession().setAttribute("attribut",mapView.get(annotation));
                 response.sendRedirect(request.getContextPath()+"/"+invomethode.getView());
             }catch(Exception ex){
                 out.print(ex);
