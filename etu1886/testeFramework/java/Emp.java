@@ -6,7 +6,6 @@
 package personne;
 
 import annotation.Myannotation;
-import java.util.HashMap;
 import traitment.ModelView;
 
 /**
@@ -14,45 +13,36 @@ import traitment.ModelView;
  * @author ITU
  */
 public class Emp {
-    int Id;
-    String Nom;
+    int id;
+    String nom;
 
     public Emp(){}
      
     public Emp(int id, String nom) {
-        this.Id = id;
-        this.Nom = nom;
+        this.id = id;
+        this.nom = nom;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
     
     public void setNom(String nom) {
-        this.Nom = nom;
+        this.nom = nom;
     }
     
     @Myannotation(value="empall")
     public ModelView getallemployer(){
-        HashMap<String,Object> map=new HashMap<String,Object>();
-        map.put("empall",34);
-        ModelView view=new ModelView("AffichageEmp.jsp",map);
+        ModelView view=new ModelView("AffichageEmp.jsp");
         return view;
     }
     
-    @Myannotation(value="add_Emp")
-    public ModelView save(){
-        HashMap<String,Object> map=new HashMap<String,Object>();
-        map.put("empall",34);
-        ModelView view=new ModelView("AffichageEmp.jsp",map);
-        return view;
-    }
 }
